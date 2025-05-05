@@ -1,0 +1,82 @@
+//
+//  ViewController.swift
+//  demo
+//
+//  Created by iMac on 05/02/25.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var imgvar: UIImageView!
+    let imgarr = ["Image","Image 1"]
+    var imgindex = 0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        imgvar.image = UIImage(named: imgarr[imgindex])
+    }
+    
+    
+    @IBAction func changeimg(_ sender: Any) {
+        imgindex = (imgindex + 1) % imgarr.count
+        imgvar.image = UIImage(named: imgarr[imgindex])
+    }
+    
+    
+
+    @IBOutlet weak var lbfood: UILabel!
+    
+    @IBOutlet weak var food: UISwitch!
+    
+    @IBAction func foodtype(_ sender: Any) {
+        if(food.isOn)
+        {
+            lbfood.text = "Veg-food 🥗"
+            lbfood.textColor = UIColor.green
+        }
+        else
+        {
+            lbfood.text = "Non-Veg food 🍗"
+            lbfood.textColor = UIColor.red
+        }
+    }
+    
+    @IBOutlet weak var rattinglb: UILabel!
+    
+    @IBOutlet weak var rating: UISlider!
+    
+    
+    @IBAction func ratingslider(_ sender: Any) {
+       // var rating = rating.value
+        let rating = Int(rating.value)
+        rattinglb.text = String(rating)
+        
+    }
+    
+    @IBOutlet weak var lbseg: UILabel!
+    
+    @IBOutlet weak var segvar: UISegmentedControl!
+    
+    @IBAction func segAction(_ sender: Any) {
+        if (segvar.selectedSegmentIndex == 0)
+        {
+            lbseg.text = "Breakfast includes :- 🥗,🫓,🍳,🥛"
+        }
+        else if (segvar.selectedSegmentIndex == 1)
+        {
+            lbseg.text = "Lunch includes :- 🌮,🥙,🍱"
+        }
+        else if (segvar.selectedSegmentIndex == 2)
+        {
+            lbseg.text = "Dinner includes :- 🍲,🫔"
+        }
+        else
+        {
+            lbseg.text = "Desserts includes :- 🍡,🍧,🧁"
+        }
+    }
+    
+}
