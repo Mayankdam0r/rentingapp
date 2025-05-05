@@ -1,0 +1,49 @@
+@IBOutlet weak var firsttext: UITextField!
+    @IBOutlet weak var sectext: UITextField!
+    @IBOutlet weak var res: UILabel!
+    var c = 0
+    @IBAction func add(_ sender: Any) {
+       
+        if  let a = Int(firsttext.text!){
+            if  let b = Int(sectext.text!){
+                c = a + b
+                res.text = "Addition result is :- \(c)"
+            }
+            }
+        }
+    
+    @IBAction func subs(_ sender: Any) {
+        if  let a = Int(firsttext.text!){
+            if  let b = Int(sectext.text!){
+                c = a - b
+                res.text = "Substraction result is :- \(c)"
+            }
+            }
+    }
+    
+    @IBAction func mul(_ sender: Any) {
+        if  let a = Int(firsttext.text!){
+            if  let b = Int(sectext.text!){
+                c = a * b
+                res.text = "Multiplication result is :- \(c)"
+            }
+            }
+    }
+    
+    
+    @IBAction func div(_ sender: Any) {
+        if  let a = Int(firsttext.text!){
+            if  let b = Int(sectext.text!){
+                c = a / b
+                res.text = "Division result is :- \(c)"
+            }
+            }
+    }
+    
+    
+    @IBAction func clear(_ sender: Any) {
+        firsttext.text = ""
+        sectext.text = ""
+    }
+    
+}
