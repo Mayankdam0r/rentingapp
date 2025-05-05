@@ -1,0 +1,47 @@
+import UIKit
+import AVKit
+import AVFoundation
+
+class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    
+    
+    var audioPlayer : AVAudioPlayer!
+    
+    @IBAction func btnplay(_ sender: Any) {
+        var path = Bundle.main.path(forResource: "nextLevel", ofType: "mp3")
+        var urlObj = URL(filePath: path!)
+        do {
+           audioPlayer = try AVAudioPlayer(contentsOf: urlObj)
+        }
+        catch {
+            print("can't play the audio")
+        }
+        audioPlayer.play()
+    }
+    
+    
+    
+    @IBAction func btnstop(_ sender: Any) {
+        audioPlayer.stop()
+    }
+    
+    var videoPlayer: AVPlayer!
+    @IBAction func btnvideo(_ sender: Any) {
+        let path = Bundle.main.path(forResource: "Ocean", ofType: "mp4")
+        let urlObj = URL(fileURLWithPath: path!)
+        
+        videoPlayer = AVPlayer(url: urlObj)
+        
+        let videoPlayerController = AVPlayerViewController()
+        videoPlayerController.player = videoPlayer
+        present(videoPlayerController, animated: true)
+        videoPlayerController.player?.play()
+        
+    }
+    
+}

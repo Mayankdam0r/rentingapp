@@ -1,0 +1,23 @@
+//You need not to take any control from library inspector
+import UIKit
+import WebKit // for WKWebView we have to import WebKit
+
+class ViewController: UIViewController {
+   // var webView : UIWebView!
+    var webView : WKWebView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        webView = WKWebView(frame: self.view.bounds)
+        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleLeftMargin]
+        if let url = URL(string : "https://www.lpu.in"){
+            let request = URLRequest(url: url)
+            //webView.loadRequest(request)
+            webView.load(request)
+        }
+        self.view.addSubview(webView)
+    }
+
+
+}

@@ -1,0 +1,25 @@
+//You need to take MKMapView control from library inspector
+
+import UIKit
+import MapKit
+
+class ViewController: UIViewController {
+
+    
+    @IBOutlet weak var mpkit: MKMapView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let region2 = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 31.253609, longitude: 75.70367), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+        
+        mpkit.setRegion(region2, animated: true)
+            
+               let annotation = MKPointAnnotation()
+               annotation.coordinate = CLLocationCoordinate2D(latitude: 31.253609, longitude: 75.70367)
+               annotation.title = "LPU"
+               mpkit.addAnnotation(annotation)
+               
+
+    }
+}
