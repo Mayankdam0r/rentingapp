@@ -1,0 +1,73 @@
+import UIKit
+
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+    
+    let data = ["Elephant","Cow","Cat","Hourse","Lion"]
+    var images = [UIImage(named: "ele"), UIImage(named: "cow"), UIImage(named: "cat"), UIImage(named: "hourse"), UIImage(named: "loin")]
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let c = tb.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        c.textLabel?.text = data[indexPath.row]
+        c.imageView?.image = images[indexPath.row]
+        print ("Cell loading method")
+        return c
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+       return "Displaying list of animals"
+    }
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "Animals display above"
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        tb.delegate = self
+        tb.dataSource = self
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.row == 0)
+        {
+            img.image = UIImage.cat
+            view.backgroundColor = UIColor.lightGray
+            
+        }
+        if(indexPath.row == 1)
+        {
+            img.image = UIImage.cow
+            
+            view.backgroundColor = UIColor.red
+            
+        }
+        if(indexPath.row == 2)
+        {
+            img.image = UIImage.ele
+            view.backgroundColor = UIColor.green
+            
+        }
+        if(indexPath.row == 3)
+        {
+            img.image = UIImage.hourse
+            view.backgroundColor = UIColor.cyan
+            
+        }
+        if(indexPath.row == 4)
+        {
+            img.image = UIImage.loin
+            view.backgroundColor = UIColor.magenta
+            
+        }
+    }
+    
+    
+    @IBOutlet weak var tb: UITableView!
+    
+    @IBOutlet weak var img: UIImageView!
+    
+}

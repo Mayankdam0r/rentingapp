@@ -1,0 +1,65 @@
+import UIKit
+
+class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource {
+    
+    let data = ["Cow","Cat","Hourse","Elephant","Tiger","LPU"]
+    
+    let imgArr = ["Image","Image 1","Image 2","Image 3","Image 4","Image 5"]
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tb.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = data[indexPath.row]
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "List of Animals"
+    }
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "All the animals listed above"
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.row == 0)
+        {
+            img.image = UIImage.image
+            view.backgroundColor = UIColor.yellow
+        }
+        if(indexPath.row == 1)
+        {
+            img.image = UIImage.image1
+            view.backgroundColor = UIColor.red
+        }
+        if(indexPath.row == 2)
+        {
+            img.image = UIImage.image3
+            view.backgroundColor = UIColor.systemPink
+        }
+        if(indexPath.row == 3)
+        {
+            img.image = UIImage.image4
+            view.backgroundColor = UIColor.green
+        }
+        if(indexPath.row == 4)
+        {
+            img.image = UIImage.image5
+            view.backgroundColor = UIColor.purple
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tb.delegate = self
+        tb.dataSource = self
+    }
+    
+    @IBOutlet weak var tb: UITableView!
+    
+    
+    @IBOutlet weak var img: UIImageView!
+    
+   
+}
